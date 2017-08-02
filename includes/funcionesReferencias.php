@@ -1502,7 +1502,7 @@ return $res;
 
 
 function traerCategoriasPorId($id) {
-$sql = "select idcategoria,descripcion,esegreso,activo from tbcategorias where idcategoria =".$id;
+$sql = "select idcategoria,descripcion,esegreso,(case when activo=1 then 'Si' else 'No' end) as activo from tbcategorias where idcategoria =".$id;
 $res = $this->query($sql,0);
 return $res;
 } 

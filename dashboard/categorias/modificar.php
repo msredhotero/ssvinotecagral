@@ -27,7 +27,7 @@ $resMenu = $serviciosHTML->menu(utf8_encode($_SESSION['nombre_predio']),"Uvas",$
 
 $id = $_GET['id'];
 
-$resResultado = $serviciosReferencias->traerClientesPorId($id);
+$resResultado = $serviciosReferencias->traerCategoriasPorId($id);
 
 
 /////////////////////// Opciones pagina ///////////////////////////////////////////////
@@ -194,6 +194,12 @@ if ($_SESSION['refroll_predio'] != 1) {
 <script type="text/javascript">
 $(document).ready(function(){
 
+	if ('<?php echo mysql_result($resResultado,0,'activo'); ?>' == 'Si') {
+		$('#activo').prop('checked',true);
+	} else {
+		$('#activo').prop('checked',false);
+	}
+	
 	$('.volver').click(function(event){
 		 
 		url = "index.php";
