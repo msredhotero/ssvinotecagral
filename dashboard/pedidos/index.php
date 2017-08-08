@@ -298,16 +298,16 @@ if ($_SESSION['refroll_predio'] != 1) {
                     </div>
                 </div>
                 
-                <div class="form-group col-md-7" style="display:block">
+                <div class="form-group col-md-7" style="display:block;">
                 	<label class="control-label" for="codigobarra" style="text-align:left">Codigo de Barras</label>
                     <div class="input-group col-md-12">
-	                    <input id="codigobarrabuscar" class="form-control" name="codigobarrabuscar" placeholder="Codigo de Barras..." type="number">
+	                    <input id="codigobarrabuscar" class="form-control" name="codigobarrabuscar" placeholder="Codigo de Barras..." type="number"/>
                     </div>
                 </div>
                 
 				
                 
-                <div class="form-group col-md-3" style="display:block">
+                <div class="form-group col-md-3" style="display:block;">
                 	<label class="control-label text-right" for="producto" style="text-align:right"></label>
                     <div class="input-group col-md-12 text-right">
 	                    <ul class="list-inline">
@@ -317,6 +317,7 @@ if ($_SESSION['refroll_predio'] != 1) {
                         <li>
                         	<button type="button" class="btn btn-info" id="ver" style="margin-left:0px;"><span class="glyphicon glyphicon-search"></span> Ver</button>
                         </li>
+                        </ul>
                     </div>
                 </div>
                 
@@ -801,16 +802,19 @@ $(document).ready(function(){
 	$('.agregarfila').click(function(e) {
 		id =  $(this).attr("id");
 		//getProducto(id);
+		//alert(id);
 		var cantidad = 1;
 		$('.detallefaltante tr').each(function(){
 			
 			if ($(this).find('td').eq(0).text() == id) {
+				
 				cantidad = $(this).find('td').eq(2).text();	
+				
 			}
 			//suma += parseFloat($(this).find('td').eq(4).text()||0,10); //numero de la celda 3
 		});
 		
-		getProducto(id, cantidad);
+		getProducto(id, cantidad, 'traerProductoPorCodigo');
 		
 	});
 	
